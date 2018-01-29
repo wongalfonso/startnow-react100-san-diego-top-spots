@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import axios from "axios";
 import TopSpot from "./topspot";
 
+const headerStyle = {
+  textAlign: "center",
+  marginBottom: "3em"
+}
+
 export class App extends Component {
   constructor(props) {
     super(props);
@@ -15,9 +20,9 @@ export class App extends Component {
   componentWillMount() {
     axios
       .get("https://origin-top-spots-api.herokuapp.com/api/topspots")
-      .then(response => response.data)
+      .then(response => response.data)      
       .then(topspots => this.setState({topspots}));
-      console.log(this.state.topspots);
+      
   }
   
   locationSplit(location) {
@@ -27,7 +32,7 @@ export class App extends Component {
   render() {
     return (
       <div className='App container'>
-        <header>
+        <header style = {headerStyle}>
           <h1>San Diego Top Spots</h1>
           <p>A list of the top 30 places to see in San Diego, California.</p>
         </header>
